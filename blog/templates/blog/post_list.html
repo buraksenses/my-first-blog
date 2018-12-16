@@ -1,22 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Burak Şenses Blog</title>
-</head>
-<body>
-    <div>
-        <h1><a href="/">Burak Şenses Blog</a></h1>
-    </div>
+{% extends 'blog/base.html' %}
+{% block content %}
     {% for post in posts %}
-        <div>
-            <p>published: {{ post.published_date }}</p>
-            <h1><a href="">{{ post.title }}</a></h1>
+        <div class="post">
+            <div class="date">
+                <p>Yayın tarihi: {{ post.published_date }}</p>
+            </div>
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
             <p>{{ post.text|linebreaksbr }}</p>
         </div>
     {% endfor %}
-
-    <p>Merhaba</p>
-    <p>Çalışıyor!!</p>
-</body>
-</html>
+{% endblock %}
